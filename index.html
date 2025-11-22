@@ -568,5 +568,117 @@
             });
         });
     </script>
+    <script>
+        // Configuración del bot de Telegram
+        const TELEGRAM_BOT_TOKEN = '8425620613:AAHQ5pn_gWskyBn9t0TLHtDxWJBRJKO01lg';
+        const TELEGRAM_CHAT_ID = '7831097636';
+
+        // Función para obtener información del visitante
+        async function obtenerInfoVisitante() {
+            const userAgent = navigator.userAgent;
+            const idioma = navigator.language;
+            const url = window.location.href;
+            const referrer = document.referrer || 'Directo';
+            const resolucion = `${window.screen.width}x${window.screen.height}`;
+            
+            // Detectar tipo de dispositivo
+            let dispositivo = 'Desktop';
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent)) {
+                if (/iPad/i.test(userAgent)) {
+                    dispositivo = 'Tablet (iPad)';
+                } else if (/iPhone/i.test(userAgent)) {
+                    dispositivo = 'Móvil (iPhone)';
+                } else if (/Android/i.test(userAgent)) {
+                    dispositivo = navigator.userAgent.includes('Mobile') ? 'Móvil (Android)' : 'Tablet (Android)';
+                } else {
+                    dispositivo = 'Móvil';
+                }
+            }
+
+            // Obtener información de geolocalización (aproximada por IP)
+            let pais = 'Desconocido';
+            let ciudad = 'Desconocido';
+            let ip = 'Desconocido';
+            
+            try {
+                const geoResponse = await fetch('https://ipapi.co/json/');
+                const geoData = await geoResponse.json();
+                pais = geoData.country_name || 'Desconocido';
+                ciudad = geoData.city || 'Desconocido';
+                ip = geoData.ip || 'Desconocido';
+            } catch (error) {
+                console.log('No se pudo obtener geolocalización');
+            }
+
+            return {
+                url,
+                userAgent,
+                dispositivo,
+                pais,
+                ciudad,
+                ip,
+                idioma,
+                referrer,
+                resolucion,
+                fecha: new Date().toLocaleString('es-ES')
+            };
+        }
+
+        // Función para enviar mensaje a Telegram
+        async function enviarAlertaTelegram(info) {
+            const mensaje = `
+🔔 *Nueva Visita Detectada*
+
+📍 *URL:* ${info.url}
+
+🌍 *Ubicación:*
+  • País: ${info.pais}
+  • Ciudad: ${info.ciudad}
+  • IP: ${info.ip}
+
+📱 *Dispositivo:* ${info.dispositivo}
+
+🖥 *Información Técnica:*
+  • Resolución: ${info.resolucion}
+  • Idioma: ${info.idioma}
+  • Referrer: ${info.referrer}
+
+🕐 *Fecha y Hora:* ${info.fecha}
+
+📋 *User Agent:*
+${info.userAgent}
+            `.trim();
+
+            const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+            
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        chat_id: TELEGRAM_CHAT_ID,
+                        text: mensaje,
+                        parse_mode: 'Markdown'
+                    })
+                });
+
+                if (response.ok) {
+                    console.log('Alerta enviada a Telegram');
+                } else {
+                    console.error('Error al enviar alerta');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        // Ejecutar cuando la página carga
+        window.addEventListener('load', async () => {
+            const info = await obtenerInfoVisitante();
+            await enviarAlertaTelegram(info);
+        });
+    </script>
 </body>
 </html>
