@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mlcolombia - Celulares iPhone, Samsung, Xiaomi | Precios Competitivos</title>
+    <meta name="description" content="Venta de celulares iPhone, Samsung y Xiaomi. Garantía oficial, envíos a toda Colombia, precios competitivos y atención personalizada.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+        
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .cta-button {
+            background: white;
+            color: #667eea;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.3s;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+        }
+        
+        .section {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+        
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 200px;
+            background: #f5f5f5;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .product-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-specs {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .product-price {
+            font-size: 1.8rem;
+            color: #667eea;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        .product-button {
+            background: #667eea;
+            color: white;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 8px;
+            width: 100%;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        
+        .product-button:hover {
+            background: #5568d3;
+        }
+        
+        .features {
+            background: #f9f9f9;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature {
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature h3 {
+            margin-bottom: 0.5rem;
+        }
+        
+        .legal-section {
+            background: white;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .legal-section h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+        
+        .legal-section p, .legal-section ul {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+        
+        .legal-section ul {
+            padding-left: 2rem;
+        }
+        
+        .contact-info {
+            background: #f9f9f9;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-info p {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .footer {
+            background: #333;
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            line-height: 2;
+        }
+        
+        .footer-section a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #555;
+            color: #999;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <div class="logo">📱 Mlcolombia</div>
+                <ul class="nav-links">
+                    <li><a href="#productos">Productos</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                    <li><a href="#politicas">Políticas</a></li>
+                    <li><a href="#terminos">Términos</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Celulares de Alta Gama a Precios Competitivos</h1>
+            <p>iPhone, Samsung, Xiaomi con garantía oficial y envío seguro</p>
+            <a href="#productos" class="cta-button">Ver Catálogo</a>
+        </div>
+    </section>
+
+    <section class="section features">
+        <div class="feature">
+            <div class="feature-icon">✅</div>
+            <h3>Garantía Oficial</h3>
+            <p>Todos nuestros productos cuentan con garantía del fabricante</p>
+        </div>
+        <div class="feature">
+            <div class="feature-icon">🚚</div>
+            <h3>Envío Seguro</h3>
+            <p>Envíos a toda Colombia con seguimiento en tiempo real</p>
+        </div>
+        <div class="feature">
+            <div class="feature-icon">💳</div>
+            <h3>Pago Seguro</h3>
+            <p>Múltiples métodos de pago con protección de comprador</p>
+        </div>
+        <div class="feature">
+            <div class="feature-icon">🔄</div>
+            <h3>Devoluciones Fáciles</h3>
+            <p>30 días para devoluciones sin complicaciones</p>
+        </div>
+    </section>
+
+    <section id="productos" class="section">
+        <div class="container">
+            <h2 class="section-title">Nuestros Productos</h2>
+            <div class="products">
+                <div class="product-card">
+                    <div class="product-image">📱</div>
+                    <h3 class="product-name">iPhone 15 Pro</h3>
+                    <p class="product-specs">256GB | Titanio Natural<br>Garantía oficial Apple</p>
+                    <div class="product-price">$4.599.000</div>
+                    <button class="product-button" onclick="contactar('iPhone 15 Pro')">Consultar Disponibilidad</button>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">📱</div>
+                    <h3 class="product-name">Samsung Galaxy S24</h3>
+                    <p class="product-specs">256GB | Negro<br>Garantía oficial Samsung</p>
+                    <div class="product-price">$3.899.000</div>
+                    <button class="product-button" onclick="contactar('Samsung Galaxy S24')">Consultar Disponibilidad</button>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">📱</div>
+                    <h3 class="product-name">Xiaomi 14</h3>
+                    <p class="product-specs">512GB | Blanco<br>Garantía oficial Xiaomi</p>
+                    <div class="product-price">$2.799.000</div>
+                    <button class="product-button" onclick="contactar('Xiaomi 14')">Consultar Disponibilidad</button>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">📱</div>
+                    <h3 class="product-name">iPhone 14</h3>
+                    <p class="product-specs">128GB | Morado<br>Garantía oficial Apple</p>
+                    <div class="product-price">$3.199.000</div>
+                    <button class="product-button" onclick="contactar('iPhone 14')">Consultar Disponibilidad</button>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">📱</div>
+                    <h3 class="product-name">Samsung Galaxy A54</h3>
+                    <p class="product-specs">256GB | Azul<br>Garantía oficial Samsung</p>
+                    <div class="product-price">$1.499.000</div>
+                    <button class="product-button" onclick="contactar('Samsung Galaxy A54')">Consultar Disponibilidad</button>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">📱</div>
+                    <h3 class="product-name">Xiaomi Redmi Note 13</h3>
+                    <p class="product-specs">256GB | Negro<br>Garantía oficial Xiaomi</p>
+                    <div class="product-price">$899.000</div>
+                    <button class="product-button" onclick="contactar('Xiaomi Redmi Note 13')">Consultar Disponibilidad</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="section" style="background: #f9f9f9;">
+        <div class="container">
+            <h2 class="section-title">Información de Contacto</h2>
+            <div class="contact-info">
+                <p><strong>📍 Dirección Física:</strong> Calle 25 #15-40, Centro Comercial Plaza Mayor, Local 205, Sincelejo, Sucre, Colombia</p>
+                <p><strong>📞 Teléfono:</strong> +57 (5) 280-5555</p>
+                <p><strong>📱 WhatsApp:</strong> +57 310 555 6789</p>
+                <p><strong>✉️ Email:</strong> ventas@Mlcolombia.com.co</p>
+                <p><strong>🕒 Horario:</strong> Lunes a Viernes: 9:00 AM - 6:00 PM | Sábados: 9:00 AM - 2:00 PM</p>
+                <p><strong>📄 NIT:</strong> 900.123.456-7</p>
+                <p><strong>🏢 Razón Social:</strong> Mlcolombia S.A.S.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="politicas" class="section">
+        <div class="container">
+            <h2 class="section-title">Políticas de la Empresa</h2>
+            
+            <div class="legal-section">
+                <h3>Política de Privacidad</h3>
+                <p>En Mlcolombia S.A.S. respetamos tu privacidad y protegemos tus datos personales de acuerdo con la Ley 1581 de 2012 de Colombia.</p>
+                <p><strong>Información que recopilamos:</strong></p>
+                <ul>
+                    <li>Nombre completo y documento de identidad</li>
+                    <li>Dirección de envío y contacto</li>
+                    <li>Número de teléfono y correo electrónico</li>
+                    <li>Información de pago (procesada de forma segura)</li>
+                </ul>
+                <p><strong>Uso de la información:</strong> Utilizamos tus datos únicamente para procesar pedidos, envíos, garantías y comunicaciones relacionadas con tu compra. Nunca compartimos tu información con terceros sin tu consentimiento.</p>
+                <p><strong>Tus derechos:</strong> Tienes derecho a conocer, actualizar, rectificar y suprimir tus datos personales contactándonos en privacidad@Mlcolombia.com.co</p>
+            </div>
+
+            <div class="legal-section">
+                <h3>Política de Devoluciones y Reembolsos</h3>
+                <p><strong>Periodo de devolución:</strong> 30 días calendario desde la fecha de recepción del producto.</p>
+                <p><strong>Condiciones para devolución:</strong></p>
+                <ul>
+                    <li>El producto debe estar en su empaque original sin abrir</li>
+                    <li>Debe incluir todos los accesorios y manuales</li>
+                    <li>No debe presentar daños físicos ni uso</li>
+                    <li>Conservar la factura de compra original</li>
+                </ul>
+                <p><strong>Proceso:</strong> Contacta nuestro servicio al cliente, envía el producto a nuestra dirección física. Una vez verificado el estado, procesaremos el reembolso en 5-10 días hábiles al mismo método de pago usado.</p>
+                <p><strong>Garantía:</strong> Todos los productos tienen garantía oficial del fabricante (Apple, Samsung, Xiaomi) según los términos de cada marca.</p>
+            </div>
+
+            <div class="legal-section">
+                <h3>Política de Envíos</h3>
+                <p><strong>Cobertura:</strong> Realizamos envíos a toda Colombia.</p>
+                <p><strong>Tiempos de entrega:</strong></p>
+                <ul>
+                    <li>Ciudades principales: 1-3 días hábiles</li>
+                    <li>Ciudades intermedias: 3-5 días hábiles</li>
+                    <li>Zonas rurales: 5-8 días hábiles</li>
+                </ul>
+                <p><strong>Costos:</strong> Envío gratis en compras superiores a $2.000.000. Para montos inferiores, el costo varía según destino (desde $15.000).</p>
+                <p><strong>Seguimiento:</strong> Recibirás un número de guía para rastrear tu pedido en tiempo real.</p>
+                <p><strong>Empaque:</strong> Todos los productos se envían con empaque seguro y seguro de transporte incluido.</p>
+            </div>
+
+            <div class="legal-section">
+                <h3>Métodos de Pago</h3>
+                <p>Aceptamos los siguientes métodos de pago seguros:</p>
+                <ul>
+                    <li><strong>Tarjetas de crédito:</strong> Visa, Mastercard, American Express</li>
+                    <li><strong>Tarjetas débito:</strong> Todas las franquicias nacionales</li>
+                    <li><strong>PSE:</strong> Pago electrónico desde tu banco</li>
+                    <li><strong>Transferencia bancaria:</strong> Bancolombia, Davivienda, BBVA</li>
+                    <li><strong>Efectivo:</strong> En nuestra tienda física en Sincelejo</li>
+                </ul>
+                <p>Todas las transacciones están protegidas con encriptación SSL y cumplen con los estándares PCI DSS.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="terminos" class="section" style="background: #f9f9f9;">
+        <div class="container">
+            <h2 class="section-title">Términos y Condiciones</h2>
+            
+            <div class="legal-section">
+                <h3>Términos Generales de Uso</h3>
+                <p><strong>Aceptación:</strong> Al realizar una compra en Mlcolombia, aceptas estos términos y condiciones.</p>
+                
+                <p><strong>Productos:</strong></p>
+                <ul>
+                    <li>Todos los celulares son nuevos y originales con garantía oficial</li>
+                    <li>Los precios están sujetos a disponibilidad y pueden cambiar sin previo aviso</li>
+                    <li>Las imágenes son referenciales, el producto puede variar ligeramente</li>
+                    <li>Verificamos la autenticidad de cada producto antes del envío</li>
+                </ul>
+
+                <p><strong>Disponibilidad:</strong> La disponibilidad de productos se actualiza en tiempo real. En caso de no tener stock, te contactaremos en 24 horas para ofrecerte alternativas o reembolso total.</p>
+
+                <p><strong>Precios:</strong> Todos los precios están expresados en pesos colombianos (COP) e incluyen IVA cuando aplica. No incluyen costos de envío a menos que se indique lo contrario.</p>
+
+                <p><strong>Responsabilidad:</strong> Mlcolombia S.A.S. no se hace responsable por el mal uso del producto o daños causados después de la entrega. La garantía cubre únicamente defectos de fabricación según términos del fabricante.</p>
+
+                <p><strong>Comprador:</strong> Debes ser mayor de 18 años o contar con autorización de un adulto responsable para realizar compras. Nos reservamos el derecho de verificar identidad.</p>
+
+                <p><strong>Modificaciones:</strong> Nos reservamos el derecho de modificar estos términos. Los cambios serán publicados en esta página con fecha de actualización.</p>
+
+                <p><strong>Jurisdicción:</strong> Estos términos se rigen por las leyes de la República de Colombia. Cualquier disputa será resuelta en los tribunales de Sincelejo, Sucre.</p>
+                
+                <p><strong>Contacto Legal:</strong> Para consultas legales: legal@Mlcolombia.com.co</p>
+                
+                <p style="margin-top: 2rem;"><strong>Última actualización:</strong> 21 de noviembre de 2025</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Mlcolombia</h4>
+                    <p>Tu tienda de confianza para celulares de alta gama con garantía oficial.</p>
+                    <p>NIT: 900.123.456-7</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="#productos">Productos</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                        <li><a href="#politicas">Políticas</a></li>
+                        <li><a href="#terminos">Términos</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <ul>
+                        <li>Calle 25 #15-40, Local 205</li>
+                        <li>Sincelejo, Sucre, Colombia</li>
+                        <li>Tel: +57 (5) 280-5555</li>
+                        <li>Email: ventas@Mlcolombia.com.co</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Horarios</h4>
+                    <ul>
+                        <li>Lunes - Viernes: 9AM - 6PM</li>
+                        <li>Sábados: 9AM - 2PM</li>
+                        <li>Domingos: Cerrado</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Mlcolombia S.A.S. Todos los derechos reservados.</p>
+                <p>Productos con garantía oficial Apple, Samsung y Xiaomi</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function contactar(producto) {
+            const mensaje = `Hola, estoy interesado en el ${producto}. ¿Está disponible?`;
+            const telefono = '573105556789';
+            const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
+            window.open(url, '_blank');
+        }
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
